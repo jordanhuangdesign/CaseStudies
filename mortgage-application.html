@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reframing the Mortgage Application as a Conversation — Jordan Huang</title>
+<meta name="description" content="Case study: turning a long-form mortgage application into a guided, conversational journey designed to evolve toward AI-assisted interactions.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Reframing the Mortgage Application as a Conversation — Jordan Huang">
+<meta property="og:description" content="Case study: turning a long-form mortgage application into a guided, conversational journey designed to evolve toward AI-assisted interactions.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="assets/avatar-128.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F6F3}
+.bleed{margin-left:-8px!important;margin-right:-8px!important}
+.bleedL{margin-left:-8px!important}.bleedR{margin-right:-8px!important}
+a{color:#4F33B8}a:hover{color:#3A2292}
+a:focus-visible{outline:2px solid #B9A8FF;outline-offset:4px;border-radius:6px}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.rise{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.d1{animation-delay:.08s}.d2{animation-delay:.18s}.d3{animation-delay:.3s}
+@supports (animation-timeline: view()){.reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 5% entry 45%}}
+.ul{background:linear-gradient(currentColor,currentColor) 0 100%/0 1.5px no-repeat;transition:background-size .35s cubic-bezier(.2,.7,.2,1);text-decoration:none}
+.ul:hover{background-size:100% 1.5px}
+.btn{transition:transform .25s,background-color .25s}.btn:hover{transform:translateY(-2px)}
+.btn .arrow,.card .arrow{transition:transform .35s cubic-bezier(.2,.7,.2,1)}.btn:hover .arrow,.card:hover .arrow{transform:translateX(5px)}
+.card{transition:transform .6s cubic-bezier(.2,.7,.2,1),box-shadow .6s cubic-bezier(.2,.7,.2,1)}
+.card:hover{transform:translateY(-6px);box-shadow:0 32px 64px -32px rgba(14,19,32,.4)}
+.q{transition:transform .4s cubic-bezier(.2,.7,.2,1),border-color .4s,box-shadow .4s}
+.q:hover{transform:translateY(-4px);border-color:#B7A6F0;box-shadow:0 24px 48px -28px rgba(14,19,32,.35)}
+.q .qn{transition:background-color .4s,color .4s}
+.q:hover .qn{background-color:var(--accent)!important;color:#FFFFFF!important}
+.qgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+.qgrid .w2,.qgrid .w3{grid-column:auto}
+@media (max-width: 860px){.qgrid{grid-template-columns:minmax(0,1fr)}.qgrid .w2,.qgrid .w3{grid-column:auto}}
+.stat a{color:#535B6A}
+@keyframes wzThr{0%{opacity:0;transform:translateY(30px)}2%{opacity:1;transform:translateY(30px)}26%{transform:translateY(30px)}32%{transform:translateY(-154px)}54%{transform:translateY(-154px)}60%{transform:translateY(-338px)}90%{opacity:1;transform:translateY(-338px)}94%,100%{opacity:0;transform:translateY(-338px)}}
+@keyframes wzRv1{0%,2%{clip-path:inset(0 0 100% 0)}8%,100%{clip-path:inset(0 0 0 0)}}
+@keyframes wzRv2{0%,31%{opacity:0;clip-path:inset(0 0 100% 0)}32%{opacity:1;clip-path:inset(0 0 100% 0)}38%,100%{opacity:1;clip-path:inset(0 0 0 0)}}
+@keyframes wzRv3{0%,59%{opacity:0;clip-path:inset(0 0 100% 0)}60%{opacity:1;clip-path:inset(0 0 100% 0)}66%,100%{opacity:1;clip-path:inset(0 0 0 0)}}
+@keyframes wzC1{0%,8%{opacity:0;transform:translateY(8px);height:100px}11%,27%{opacity:1;transform:none;height:100px}31%,100%{opacity:0;height:0}}
+@keyframes wzSel{0%,20%{border-color:#C1C1C1}22%,100%{border-color:#501283}}
+@keyframes wzDot{0%,20%{transform:scale(0)}22%,100%{transform:scale(1)}}
+@keyframes wzA1{0%,27%{opacity:0;height:0}31%,100%{opacity:1;height:52px}}
+@keyframes wzI2{0%,38%{opacity:0;height:64px}40%,54%{opacity:1;height:64px}57%,100%{opacity:0;height:0}}
+@keyframes wzT2{0%,41%{width:0;animation-timing-function:steps(10,end)}50%,100%{width:5.2em}}
+@keyframes wzPh2{0%,41%{opacity:1}41.5%,100%{opacity:0}}
+@keyframes wzB2{0%,50%{background-color:#DBDBDB}52%,100%{background-color:#501283}}
+@keyframes wzA2{0%,55%{opacity:0;height:0}59%,100%{opacity:1;height:52px}}
+@keyframes wzI3{0%,66%{opacity:0}68%,100%{opacity:1}}
+@keyframes wzT3{0%,70%{width:0;animation-timing-function:steps(8,end)}78%,100%{width:4.4em}}
+@keyframes wzPh3{0%,70%{opacity:1}70.5%,100%{opacity:0}}
+@keyframes wzB3{0%,79%{background-color:#DBDBDB}81%,100%{background-color:#501283}}
+@keyframes wzBlink{0%,50%{opacity:1}50.01%,100%{opacity:0}}
+.wz-thr{animation:wzThr 16s cubic-bezier(.22,1,.36,1) infinite}
+.wz-rv1{animation:wzRv1 16s linear infinite}.wz-rv2{animation:wzRv2 16s linear infinite}.wz-rv3{animation:wzRv3 16s linear infinite}
+.wz-c1{animation:wzC1 16s cubic-bezier(.22,1,.36,1) infinite}
+.wz-sel{animation:wzSel 16s infinite}.wz-dot{animation:wzDot 16s cubic-bezier(.3,1.6,.5,1) infinite}
+.wz-a1{animation:wzA1 16s cubic-bezier(.22,1,.36,1) infinite}
+.wz-i2{animation:wzI2 16s cubic-bezier(.22,1,.36,1) infinite}.wz-t2{animation:wzT2 16s infinite}.wz-ph2{animation:wzPh2 16s infinite}.wz-b2{animation:wzB2 16s infinite}
+.wz-a2{animation:wzA2 16s cubic-bezier(.22,1,.36,1) infinite}
+.wz-i3{animation:wzI3 16s infinite}.wz-t3{animation:wzT3 16s infinite}.wz-ph3{animation:wzPh3 16s infinite}.wz-b3{animation:wzB3 16s infinite}
+.wz-cur{animation:wzBlink 1s infinite}
+@media (max-width: 600px){.wz{zoom:.7}}
+@keyframes wzPop0{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes wzPop1{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes wzPop2{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes wzUp0{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes wzUp1{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes wzUp2{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes wdIn{from{opacity:0}to{opacity:1}}
+.wd{animation:wdIn .22s ease-out both}
+.wz-hist{animation:wzUp0 .4s cubic-bezier(.22,1,.36,1) both}
+.shot{transition:transform 1s cubic-bezier(.2,.7,.2,1),box-shadow 1s cubic-bezier(.2,.7,.2,1)}
+.shot:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 50px 90px -40px rgba(14,19,32,.5)}
+@keyframes s1{0%,2%{opacity:0;transform:translateY(12px)}7%,90%{opacity:1;transform:none}96%,100%{opacity:0}}
+@keyframes s2{0%,15%{opacity:0;transform:translateY(12px)}20%,90%{opacity:1;transform:none}96%,100%{opacity:0}}
+@keyframes s3{0%,32%{opacity:0;transform:translateY(12px)}37%,90%{opacity:1;transform:none}96%,100%{opacity:0}}
+@keyframes s4{0%,50%{opacity:0;transform:translateY(12px)}55%,90%{opacity:1;transform:none}96%,100%{opacity:0}}
+@keyframes s5{0%,70%{opacity:0;transform:translateY(12px)}75%,90%{opacity:1;transform:none}96%,100%{opacity:0}}
+@keyframes tp{0%,24%{opacity:0}26%,31%{opacity:1}33%,59%{opacity:0}61%,68%{opacity:1}70%,100%{opacity:0}}
+@keyframes dot{0%,100%{opacity:.3;transform:none}50%{opacity:1;transform:translateY(-3px)}}
+@keyframes prog{0%,52%{width:34%}58%,100%{width:62%}}
+.s1{animation:s1 14s infinite}.s2{animation:s2 14s infinite}.s3{animation:s3 14s infinite}.s4{animation:s4 14s infinite}.s5{animation:s5 14s infinite}
+.tp{animation:tp 14s infinite}
+.t1{animation:dot 1.1s infinite}.t2{animation:dot 1.1s .15s infinite}.t3{animation:dot 1.1s .3s infinite}
+.prog{animation:prog 14s cubic-bezier(.2,.7,.2,1) infinite}
+@keyframes scan{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
+.scan{animation:scan 5s cubic-bezier(.6,0,.4,1) infinite}
+.still *,.still *::before,.still *::after{animation:none!important;transition:none!important}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="" style="--accent: #5B3FD0; min-height: 100vh; background: #F5F6F3; color: #1B2230; font-family: Inter, system-ui, sans-serif; font-size: 17px; line-height: 1.65">
+
+<header style="position: sticky; top: 0; z-index: 20; background: #0E1320">
+<nav aria-label="Primary" style="max-width: 1200px; margin: 0 auto; padding: 14px clamp(20px, 4vw, 40px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px">
+<a class="bleedL" href="index.html" style="display: flex; align-items: center; gap: 12px; color: #F3F4F6; text-decoration: none; font-weight: 600; font-size: 16px">
+<img src="assets/avatar-128.jpg" alt="" style="display: block; width: 34px; height: 34px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1.5px rgba(255,255,255,0.25)">
+<span>Jordan Huang</span>
+</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 26px; font-size: 15px">
+<a class="ul" href="index.html" style="color: #D5DAE4; padding: 10px 0">← All work</a>
+<a class="ul" href="mobile-pos.html" style="color: #D5DAE4; padding: 10px 0">Next: Mobile POS</a>
+<a class="btn bleedR" href="#contact" style="color: #0E1320; background: #F3F4F6; padding: 10px 18px; border-radius: 999px; font-weight: 600; text-decoration: none">Get in touch</a>
+</div>
+</nav>
+</header>
+
+<section style="background: #0E1320; color: #F3F4F6; overflow: hidden">
+<div style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 104px) clamp(20px, 4vw, 40px) clamp(64px, 8vw, 112px); display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+<div style="flex: 1 1 500px; min-width: 0">
+<p class="rise" style="margin: 0 0 24px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: #A8B0C0">Case study 01 · Borrower application · Responsive web</p>
+<h1 class="rise d1" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 72px; line-height: 1.0; letter-spacing: -0.035em">Reframing the mortgage application as a <span style="color: #B9A8FF">conversation.</span></h1>
+<p class="rise d2" style="margin: 28px 0 0; max-width: 540px; font-size: 19px; color: #C3C9D5">Transforming a high-friction, long-form application into a guided conversational journey, designed to evolve toward AI-assisted interactions.</p>
+</div>
+<figure class="rise d3 bleed" style="flex: 1 1 440px; min-width: 0; margin: 0">
+<div class="wz" role="img" aria-label="Animation of the conversational application: loan officer Sarah Mitchell asks one question at a time in the Property step, and each answer collapses into the conversation history" style="border-radius: 18px; background: #F4F4F6; color: #222222; overflow: hidden; font-family: 'DM Sans', Inter, sans-serif; box-shadow: 0 40px 80px -24px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.1)">
+<div aria-hidden="true" style="display: flex; align-items: center; gap: 6px; padding: 11px 16px; background: #E9E8ED">
+<span style="width: 10px; height: 10px; border-radius: 50%; background: #C7C5CF"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #C7C5CF"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #C7C5CF"></span>
+<span style="margin-left: 12px; flex: 1; height: 22px; border-radius: 6px; background: #F4F4F6"></span>
+</div>
+<div aria-hidden="true" style="display: flex; align-items: center; justify-content: space-between; padding: 14px 20px 6px">
+<img src="assets/loandepot-logo.svg" alt="" style="display: block; height: 20px; width: auto">
+<span style="display: flex; align-items: center; gap: 9px"><span style="width: 30px; height: 30px; border-radius: 50%; background: #501283; color: #FFFFFF; display: grid; place-items: center; font-size: 12px; font-weight: 700">JH</span><span style="display: flex; flex-direction: column; line-height: 1.15"><span style="font-size: 9.5px; font-weight: 700; letter-spacing: 0.02em; color: #05A678">SIGNED IN</span><span style="font-size: 13px; font-weight: 700; color: #222222">John Homeowner</span></span></span>
+</div>
+<div aria-hidden="true" style="position: relative; display: flex; gap: 16px; padding: 0 18px 0 20px; height: 400px">
+<span style="position: absolute; right: 16px; bottom: 16px; z-index: 2; display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: #501283; color: #FFFFFF; font-size: 13px; font-weight: 700; box-shadow: 0 10px 24px -8px rgba(80,18,131,0.55)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"></path></svg>Questions? Chat with us</span>
+<div style="flex: 0 0 116px; padding-top: 21px">
+<div style="display: flex; align-items: center; gap: 10px; height: 40px"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="14" fill="#501283"></rect><path d="M7 14.36L11.79 19L21 9" stroke="#FFFFFF" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font-size: 13px; font-weight: 600">Register</span></div>
+<div style="display: flex; align-items: center; gap: 10px; height: 40px"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><rect x="1.5" y="1.5" width="25" height="25" rx="12.5" fill="#FFFFFF" stroke="#501283" stroke-width="3"></rect><circle cx="14" cy="14" r="7" fill="#501283"></circle></svg><span style="font-size: 13px; font-weight: 600; color: #501283">Property</span></div>
+<div style="display: flex; align-items: center; gap: 10px; height: 40px"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><rect x="1.5" y="1.5" width="25" height="25" rx="12.5" fill="#FFFFFF" stroke="#DBDBDB" stroke-width="3"></rect></svg><span style="font-size: 13px; font-weight: 600; color: #555555">About</span></div>
+<div style="display: flex; align-items: center; gap: 10px; height: 40px"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><rect x="1.5" y="1.5" width="25" height="25" rx="12.5" fill="#FFFFFF" stroke="#DBDBDB" stroke-width="3"></rect></svg><span style="font-size: 13px; font-weight: 600; color: #555555">Income</span></div>
+<div style="display: flex; align-items: center; gap: 10px; height: 40px"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><rect x="1.5" y="1.5" width="25" height="25" rx="12.5" fill="#FFFFFF" stroke="#DBDBDB" stroke-width="3"></rect></svg><span style="font-size: 13px; font-weight: 600; color: #555555">Credit Info</span></div>
+<div style="display: flex; align-items: center; gap: 10px; height: 40px"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><rect x="1.5" y="1.5" width="25" height="25" rx="12.5" fill="#FFFFFF" stroke="#DBDBDB" stroke-width="3"></rect></svg><span style="font-size: 13px; font-weight: 600; color: #555555">Submit</span></div>
+</div>
+<div style="flex: 1 1 auto; min-width: 0; overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 26px, #000 330px, transparent 390px); mask-image: linear-gradient(to bottom, transparent 0, #000 26px, #000 330px, transparent 390px)">
+<div id="wzThread" style="position: relative; opacity: 0; transition: transform .7s cubic-bezier(.22,1,.36,1), opacity .5s ease"></div>
+</div>
+</div>
+</div>
+<figcaption style="margin-top: 14px; font-size: 13px; color: #A8B0C0">Recreated from the <a class="ul" href="https://jordanhuangdesign.github.io/ConversationalApplication/mortgage-application.html" style="color: #D5DAE4">responsive web prototype ↗</a></figcaption>
+</figure>
+</div>
+</section>
+
+<section style="border-bottom: 1px solid #E4E6E0; background: #FFFFFF">
+<dl style="max-width: 1200px; margin: 0 auto; padding: 32px clamp(20px, 4vw, 40px); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 64px">
+<div><dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #535B6A">Role</dt><dd style="margin: 6px 0 0; font-weight: 500">Principal Product Designer</dd></div>
+<div><dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #535B6A">Ownership</dt><dd style="margin: 6px 0 0; font-weight: 500">Product strategy, workflow planning, UX/UI, responsive prototype</dd></div>
+<div><dt style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #535B6A">Timeline</dt><dd style="margin: 6px 0 0; font-weight: 500">2026 · 2 months</dd></div>
+</dl>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(72px, 10vw, 128px) clamp(20px, 4vw, 40px) clamp(48px, 6vw, 80px)">
+<div style="display: flex; flex-wrap: wrap; gap: 40px 72px">
+<div class="reveal" style="flex: 1 1 280px; min-width: 0">
+<p style="margin: 0 0 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #4F33B8">The challenge</p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(36px, 4vw, 54px); line-height: 1.02; letter-spacing: -0.03em">Too much paperwork. Zero feedback.</h2>
+</div>
+<div class="reveal" style="flex: 2.6 1 600px; min-width: 0">
+<p style="margin: 0; font-size: 20px; line-height: 1.6; color: #2B3240">Mortgage applications ask borrowers for a large amount of information before giving much value in return. The legacy experience exposed that complexity through a traditional long-form interface, creating cognitive overload and significant abandonment.</p>
+<p style="margin: 36px 0 14px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #535B6A">What industry research shows</p>
+<div class="bleed" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: 16px">
+<div class="stat" style="padding: 22px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E4E6E0; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 40px; line-height: 1.05; letter-spacing: -0.03em">~1 in 2</span><span style="font-size: 15px; color: #424A59">borrowers finished an online mortgage application in one sitting; the top reason for abandoning was that it took too long</span><a class="ul" href="https://mpamag.com/us/mortgage-industry/industry-trends/why-are-consumers-abandoning-online-mortgage-applications/174757" style="margin-top: auto; font-size: 13px">Ellie Mae survey, 2019 ↗</a></div>
+<div class="stat" style="padding: 22px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E4E6E0; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 40px; line-height: 1.05; letter-spacing: -0.03em">20%</span><span style="font-size: 15px; color: #424A59">of borrowers who abandoned an application went on to choose another lender</span><a class="ul" href="https://mpamag.com/us/mortgage-industry/industry-trends/why-are-consumers-abandoning-online-mortgage-applications/174757" style="margin-top: auto; font-size: 13px">Ellie Mae survey, 2019 ↗</a></div>
+<div class="stat" style="padding: 22px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E4E6E0; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 40px; line-height: 1.05; letter-spacing: -0.03em">60–75%</span><span style="font-size: 15px; color: #424A59">typical start-to-submit conversion for mortgage POS platforms, versus 80–85% for the best</span><a class="ul" href="https://newslink.mba.org/?p=261010" style="margin-top: auto; font-size: 13px">MBA NewsLink, 2025 ↗</a></div>
+</div>
+</div>
+</div>
+<figure class="reveal bleed" style="margin: 64px 0 0; border-radius: 24px; background: #ECEEE8; padding: clamp(16px, 4vw, 56px)">
+<div class="shot" style="position: relative; max-width: 960px; margin: 0 auto; border-radius: 12px; overflow: hidden; background: #FFFFFF; box-shadow: 0 30px 60px -30px rgba(14,19,32,0.35)">
+<div aria-hidden="true" style="display: flex; gap: 6px; padding: 10px 14px; background: #E9EBF0"><span style="width: 9px; height: 9px; border-radius: 50%; background: #C7CCD6"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #C7CCD6"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #C7CCD6"></span></div>
+<img src="assets/legacy-application.png" alt="The legacy loanDepot mortgage application: a long form starting with name, email, phone and home address fields, with seven steps listed down the left" style="display: block; width: 100%; height: auto">
+</div>
+<figcaption style="max-width: 960px; margin: 20px auto 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 15px; color: #424A59"><strong style="color: #1B2230">Before: the legacy application</strong><span>A long form up front, with little sense of progress or payoff.</span></figcaption>
+</figure>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 40px) clamp(72px, 10vw, 128px)">
+<h3 class="reveal" style="margin: 0 0 28px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 28px; letter-spacing: -0.02em">The questions that shaped the work</h3>
+<div class="qgrid bleed">
+<div class="q w3 reveal" style="padding: 18px 24px; border-radius: 20px; border: 1px solid #E4E6E0; background: #FFFFFF; display: flex; align-items: center; gap: 20px"><span class="qn" style="flex: 0 0 auto; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #EEEAFB; color: #4F33B8; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500">Q1</span><p style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.25; letter-spacing: -0.015em">Are all the up-front questions necessary?</p></div>
+<div class="q w3 reveal" style="padding: 18px 24px; border-radius: 20px; border: 1px solid #E4E6E0; background: #FFFFFF; display: flex; align-items: center; gap: 20px"><span class="qn" style="flex: 0 0 auto; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #EEEAFB; color: #4F33B8; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500">Q2</span><p style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.25; letter-spacing: -0.015em">Can some questions move later, when borrowers are more invested, to reduce drop-off?</p></div>
+<div class="q w2 reveal" style="padding: 18px 24px; border-radius: 20px; border: 1px solid #E4E6E0; background: #FFFFFF; display: flex; align-items: center; gap: 20px"><span class="qn" style="flex: 0 0 auto; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #EEEAFB; color: #4F33B8; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500">Q3</span><p style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.25; letter-spacing: -0.015em">How can we give more guidance during the process?</p></div>
+<div class="q w2 reveal" style="padding: 18px 24px; border-radius: 20px; border: 1px solid #E4E6E0; background: #FFFFFF; display: flex; align-items: center; gap: 20px"><span class="qn" style="flex: 0 0 auto; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #EEEAFB; color: #4F33B8; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500">Q4</span><p style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.25; letter-spacing: -0.015em">Can borrowers get something back even while we're still requesting information?</p></div>
+<div class="q w2 reveal" style="padding: 18px 24px; border-radius: 20px; border: 1px solid #E4E6E0; background: #FFFFFF; display: flex; align-items: center; gap: 20px"><span class="qn" style="flex: 0 0 auto; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #EEEAFB; color: #4F33B8; font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500">Q5</span><p style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 22px; line-height: 1.25; letter-spacing: -0.015em">How do we break the application into bite-sized steps that don't overwhelm?</p></div>
+</div>
+</section>
+
+<section style="background: #0E1320; color: #F3F4F6">
+<div style="max-width: 1200px; margin: 0 auto; padding: clamp(72px, 10vw, 128px) clamp(20px, 4vw, 40px); display: flex; flex-wrap: wrap; gap: 40px 72px">
+<div class="reveal" style="flex: 1 1 340px; min-width: 0">
+<p style="margin: 0 0 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #B9A8FF">First-principles thinking</p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(36px, 4.4vw, 58px); line-height: 1.02; letter-spacing: -0.03em">Shaking off the shadows of the past.</h2>
+</div>
+<div class="reveal" style="flex: 1.3 1 440px; min-width: 0; font-size: 19px; color: #C3C9D5">
+<p style="margin: 0">With competitors launching new loan application designs, it was clear that incremental improvements wouldn't regain loanDepot's position. The new application needed to be a step change, and built to last.</p>
+<p style="margin: 20px 0 0">This is, however, a very conservative industry, and every change required lengthy discussion. To move those discussions forward, I built a lightweight web tool with an AI coding agent. It surfaced which questions and information tie to the milestones that matter most: lead generation and prequalification.</p>
+</div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(72px, 10vw, 128px) clamp(20px, 4vw, 40px) 0">
+<div class="reveal" style="max-width: 760px">
+<p style="margin: 0 0 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #4F33B8">The tool</p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(36px, 4.4vw, 58px); line-height: 1.02; letter-spacing: -0.03em">Loan Origination Planner</h2>
+<p style="margin: 20px 0 0; font-size: 20px; color: #2B3240">Instead of debating the flow in the abstract, stakeholders could shape the application directly and see what each change meant for lending milestones.</p>
+</div>
+
+<figure class="reveal bleed" style="margin: 48px 0 0; border-radius: 24px; background: #EEEAFB; padding: clamp(16px, 4vw, 56px)">
+<div class="shot" style="position: relative; border-radius: 12px; overflow: hidden; background: #FFFFFF; box-shadow: 0 30px 60px -30px rgba(14,19,32,0.35)">
+<div aria-hidden="true" style="display: flex; gap: 6px; padding: 10px 14px; background: #E9EBF0"><span style="width: 9px; height: 9px; border-radius: 50%; background: #C7CCD6"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #C7CCD6"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #C7CCD6"></span></div>
+<div style="position: relative; overflow: hidden">
+<img src="assets/loan-origination-planner.png" alt="The Loan Origination Planner: application categories with their questions on the left, each mapped to a satisfied requirement, and requirement checklists for account creation and pre-qualification on the right" style="display: block; width: 100%; height: auto">
+<div aria-hidden="true" class="scan" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(91,63,208,0) 0%, rgba(91,63,208,0.08) 48%, rgba(91,63,208,0.18) 50%, rgba(91,63,208,0) 52%); pointer-events: none"></div>
+</div>
+</div>
+<figcaption style="margin-top: 20px; font-size: 15px; color: #424A59">Built with an AI coding agent. Every question carries the requirement it satisfies, and milestone checklists update as steps are completed.</figcaption>
+</figure>
+
+<div style="margin-top: 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 40px 48px">
+<div class="reveal" style="border-top: 2px solid #1B2230; padding-top: 24px"><h3 style="margin: 0 0 10px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -0.02em">Structure the application</h3><p style="margin: 0; color: #424A59">Stakeholders can add, edit, remove and reorder categories and individual questions, and move steps between categories.</p></div>
+<div class="reveal" style="border-top: 2px solid #1B2230; padding-top: 24px"><h3 style="margin: 0 0 10px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -0.02em">Connect every question to a purpose</h3><p style="margin: 0; color: #424A59">Each question maps to the requirement it satisfies, so the application stops accumulating questions just because they've always been there.</p></div>
+<div class="reveal" style="border-top: 2px solid #1B2230; padding-top: 24px"><h3 style="margin: 0 0 10px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -0.02em">Visualize lending milestones</h3><p style="margin: 0; color: #424A59">Requirements roll up into checklists that update as steps satisfy them, and the tool shows where each milestone is reached in the flow.</p></div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(72px, 10vw, 120px) clamp(20px, 4vw, 40px)">
+<blockquote class="reveal bleed" style="margin: 0; padding: clamp(32px, 5vw, 64px); border-radius: 28px; background: #FFFFFF; border: 1px solid #E4E6E0">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #535B6A">Instead of “Should we ask this?”</p>
+<p style="margin: 16px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(32px, 4.4vw, 60px); line-height: 1.05; letter-spacing: -0.03em">“What requirement does this answer satisfy?”</p>
+</blockquote>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 40px) clamp(72px, 10vw, 128px)">
+<div class="reveal" style="max-width: 760px">
+<p style="margin: 0 0 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #4F33B8">The design pivot</p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(36px, 4.4vw, 58px); line-height: 1.02; letter-spacing: -0.03em">From lengthy forms to an interactive conversation.</h2>
+</div>
+<div class="bleed" style="margin-top: 48px; display: flex; flex-wrap: wrap; align-items: stretch; gap: 20px">
+<div class="reveal" style="flex: 1 1 320px; min-width: 0; padding: 32px; border-radius: 24px; background: #FFFFFF; border: 1px solid #E4E6E0">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #535B6A">MVP · Rules-based</span>
+<h3 style="margin: 12px 0 16px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.02em">Deterministic conversation</h3>
+<ul style="margin: 0; padding-left: 20px; color: #424A59; display: flex; flex-direction: column; gap: 8px">
+<li>Answers trigger predefined follow-up questions</li>
+<li>Conditional fields appear only when relevant</li>
+<li>Steps are skipped based on established application logic</li>
+</ul>
+</div>
+<div aria-hidden="true" style="flex: 0 0 auto; align-self: center; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: var(--accent); color: #FFFFFF; font-size: 22px; margin: 0 auto">→</div>
+<div class="reveal" style="flex: 1 1 320px; min-width: 0; padding: 32px; border-radius: 24px; background: #0E1320; color: #F3F4F6">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #B9A8FF">Next · AI-assisted</span>
+<h3 style="margin: 12px 0 16px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: -0.02em">A virtual agent in the same interface</h3>
+<ul style="margin: 0; padding-left: 20px; color: #C3C9D5; display: flex; flex-direction: column; gap: 8px">
+<li>Controls pacing and keeps questions in context</li>
+<li>Acknowledges responses</li>
+<li>Follows up when answers are incomplete or unclear</li>
+</ul>
+</div>
+</div>
+<div class="reveal" style="margin-top: 40px; font-size: 19px; color: #2B3240">
+<p style="margin: 0">AI capabilities weren't production-ready when the design was introduced, so the MVP used deterministic logic. The interface was built so a virtual agent could take over without a redesign.</p>
+<p style="margin: 20px 0 0">That let us modernize the experience within organizational constraints and without extensive backend upgrades.</p>
+</div>
+</section>
+
+<section style="background: #FFFFFF; border-top: 1px solid #E4E6E0; border-bottom: 1px solid #E4E6E0">
+<div style="max-width: 1200px; margin: 0 auto; padding: clamp(72px, 10vw, 128px) clamp(20px, 4vw, 40px)">
+<div class="reveal">
+<p style="margin: 0 0 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #4F33B8">Outcome</p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(36px, 4.4vw, 58px); line-height: 1.02; letter-spacing: -0.03em">A new interaction model, and a shared way to decide.</h2>
+<p style="margin: 24px 0 0; font-size: 19px; color: #2B3240">The concept established a new interaction model for the mortgage application: less visible complexity, an experience that adapts to the borrower, and a foundation for AI-assisted workflows.</p>
+<p style="margin: 20px 0 0; font-size: 19px; color: #2B3240">Just as importantly, the planner gave the organization a shared framework for deciding what belongs in the application, when to collect it, and which requirement each step satisfies.</p>
+</div>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(64px, 8vw, 104px) clamp(20px, 4vw, 40px)">
+<a href="mobile-pos.html" class="card reveal bleed" style="display: flex; flex-wrap: nowrap; justify-content: space-between; align-items: center; gap: 24px; padding: clamp(28px, 4vw, 48px); border-radius: 28px; background: #0E1320; color: #F3F4F6; text-decoration: none">
+<div style="flex: 0 1 640px; min-width: 0">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #A8B0C0">Next case study</span>
+<p style="margin: 10px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.05; letter-spacing: -0.025em">From legacy POS to a mobile-first experience</p>
+</div>
+<span class="arrow" aria-hidden="true" style="width: 64px; height: 64px; border-radius: 50%; background: var(--accent); color: #FFFFFF; display: grid; place-items: center; font-size: 26px; flex: 0 0 auto">→</span>
+</a>
+</section>
+
+<footer id="contact" style="background: #0E1320; color: #F3F4F6">
+<div style="max-width: 1200px; margin: 0 auto; padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 40px) 40px">
+<div style="display: flex; flex-wrap: wrap; gap: 40px 72px; align-items: flex-end">
+<div class="reveal" style="flex: 1 1 100%; min-width: 0">
+<p style="margin: 0 0 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #B9A8FF">Contact me</p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(38px, 5vw, 68px); line-height: 1.0; letter-spacing: -0.035em">Have a complex product that needs to feel simple?</h2>
+</div>
+</div>
+<div class="bleedL" style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 14px">
+<a class="btn" href="mailto:jordan.huang.design@gmail.com" style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 26px; border-radius: 999px; background: #F3F4F6; color: #0E1320; font-weight: 600; text-decoration: none">jordan.huang.design@gmail.com <span class="arrow" aria-hidden="true">→</span></a>
+<a class="btn" href="https://www.linkedin.com/in/jordan-huang-design/" style="display: inline-flex; align-items: center; padding: 16px 26px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.24); color: #F3F4F6; font-weight: 600; text-decoration: none">LinkedIn</a>
+<a class="btn" href="https://github.com/jordanhuangdesign/Portfolio/raw/main/Resume%20-%20Jordan%20Huang%20-%202026.10.09.pdf" style="display: inline-flex; align-items: center; padding: 16px 26px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.24); color: #F3F4F6; font-weight: 600; text-decoration: none">Résumé (PDF)</a>
+</div>
+<div style="margin-top: 80px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px; color: #A8B0C0"><span>© 2026 Jordan Huang</span><a class="ul" href="index.html" style="color: #A8B0C0">Back to all work</a></div>
+</div>
+</footer>
+</div>
+<script>
+(function () {
+  var Q = [
+    { text: "Now for the exciting part — your new home. Do you already know the area where you'd like to buy?", type: 'yn', ans: 'Yes', pre: '' },
+    { text: "Wonderful — what city and state are you considering? We'll pair you with a loan expert who knows that market.", type: 'text', ph: 'City, State', ans: 'Irvine, CA', pre: '' },
+    { text: "Roughly what price range are you aiming for? A ballpark number is perfectly fine.", type: 'text', ph: 'Purchase price', ans: '650,000', pre: '$' }
+  ];
+  var WORD = 85, CHAR = 110, AV = 'assets/loan-officer-avatar.png';
+  var thread = document.getElementById('wzThread');
+  if (!thread) return;
+
+  var cur = 400;
+  var steps = Q.map(function (q) {
+    var words = q.text.split(' ');
+    var s = cur, tB = s + 450, tIn = tB + words.length * WORD + 300, tAns = tIn + 500;
+    var tAE = tAns + (q.type === 'yn' ? 700 : q.ans.length * CHAR), tNx = tAE + 450, tDone = tNx + 500;
+    cur = tDone;
+    return { q: q, words: words, tB: tB, tIn: tIn, tAns: tAns, tAE: tAE, tNx: tNx, tDone: tDone };
+  });
+  var END = cur, L = cur + 2200 + 700;
+
+  function esc(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  var AVATAR = '<img src="' + AV + '" alt="" style="flex: 0 0 34px; width: 34px; height: 34px; border-radius: 50%; border: 2px solid #E6E5EA; box-sizing: border-box">';
+  var WHO = '<div style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.02em; color: #501283; margin-bottom: 3px; white-space: nowrap">Sarah Mitchell · loanDepot</div>';
+  var BUBBLE = 'min-width: 0; display: inline-block; background: #FFFFFF; border: 1.5px solid #E6E5EA; border-radius: 4px 16px 16px 16px; padding: 11px 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.05)';
+  var PEN = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#93919A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>';
+
+  function histHTML(p, animate) {
+    return '<div style="margin-bottom: 16px">' +
+      '<div style="display: flex; gap: 12px; align-items: flex-start">' + AVATAR +
+      '<div style="' + BUBBLE + '">' + WHO + '<div style="font-size: 14px; font-weight: 600; line-height: 1.45">' + esc(p.q.text) + '</div></div></div>' +
+      '<div' + (animate ? ' class="wz-hist"' : '') + ' style="display: flex; justify-content: flex-end; margin-top: 12px">' +
+      '<span style="display: inline-flex; align-items: center; gap: 10px; background: #FFFFFF; border: 1.5px solid #E6E5EA; border-radius: 14px; padding: 8px 14px; font-size: 14px; font-weight: 600">' + esc(p.q.pre + p.q.ans) + ' ' + PEN + '</span></div></div>';
+  }
+  function curHTML() {
+    return '<div id="wzCur">' +
+      '<div style="display: flex; gap: 12px; align-items: flex-start; animation: wzPop0 .45s cubic-bezier(.22,1,.36,1) both">' + AVATAR +
+      '<div style="' + BUBBLE + '">' + WHO +
+      '<div style="font-size: 14px; font-weight: 600; line-height: 1.45; min-height: 20px"><span id="wzWords"></span>' +
+      '<span id="wzTCur" class="wz-cur" style="display: inline-block; width: 2px; height: 15px; vertical-align: -2px; background: #501283"></span></div>' +
+      '</div></div><div id="wzIn"></div></div>';
+  }
+  function inputHTML(q) {
+    var h = '<div style="margin: 14px 0 0 46px; animation: wzUp0 .4s cubic-bezier(.22,1,.36,1) both">';
+    if (q.type === 'yn') {
+      h += '<div style="display: flex; flex-direction: column; gap: 8px">' +
+        '<div id="wzYes" style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 14px; box-sizing: border-box; background: #FFFFFF; border: 2px solid #C1C1C1; border-radius: 14px; font-size: 14px; font-weight: 600; transition: border-color .2s">' +
+        '<span id="wzYesR" style="width: 16px; height: 16px; border-radius: 50%; border: 2px solid #C1C1C1; box-sizing: border-box; display: grid; place-items: center; transition: border-color .2s"><span id="wzDot" style="width: 8px; height: 8px; border-radius: 50%; background: #501283; transform: scale(0); transition: transform .25s cubic-bezier(.3,1.6,.5,1)"></span></span>Yes</div>' +
+        '<div style="display: flex; align-items: center; gap: 10px; height: 42px; padding: 0 14px; box-sizing: border-box; background: #FFFFFF; border: 2px solid #C1C1C1; border-radius: 14px; font-size: 14px; font-weight: 600"><span style="width: 16px; height: 16px; border-radius: 50%; border: 2px solid #C1C1C1; box-sizing: border-box"></span>No</div></div>';
+    } else {
+      h += '<div style="position: relative; height: 44px; box-sizing: border-box; border: 1.5px solid #501283; border-radius: 14px; background: #FFFFFF; padding: 0 14px; display: flex; align-items: center; font-size: 15px; font-weight: 500; white-space: nowrap">' +
+        (q.pre ? '<span style="color: #555555; margin-right: 2px">' + esc(q.pre) + '</span>' : '') +
+        '<span id="wzPh" style="position: absolute; left: ' + (q.pre ? '28px' : '14px') + '; color: #A3A3A3">' + esc(q.ph) + '</span>' +
+        '<span id="wzTyped"></span><span id="wzICur" class="wz-cur" style="display: inline-block; width: 2px; height: 18px; background: #501283; margin-left: 1px"></span></div>';
+    }
+    h += '<div style="display: flex; justify-content: flex-end; margin-top: 12px"><span id="wzNext" style="display: inline-flex; align-items: center; justify-content: center; height: 36px; padding: 0 20px; border-radius: 999px; background: #DBDBDB; color: #FFFFFF; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; transition: background-color .2s, transform .15s">NEXT</span></div></div>';
+    return h;
+  }
+
+  var curAi = -1, curWords = 0, inputBuilt = false;
+  function $(id) { return document.getElementById(id); }
+
+  function render(t) {
+    var ai = steps.length - 1;
+    for (var i = 0; i < steps.length; i++) { if (t < steps[i].tDone) { ai = i; break; } }
+    var a = steps[ai], q = a.q, isYn = q.type === 'yn';
+    var nw = t < a.tB ? 0 : Math.min(a.words.length, Math.floor((t - a.tB) / WORD) + 1);
+    var chars = (!isYn && t >= a.tAns) ? Math.min(q.ans.length, Math.floor((t - a.tAns) / CHAR) + 1) : 0;
+    var ready = t >= a.tAE, pressed = t >= a.tNx;
+
+    if (ai !== curAi) {
+      var h = '';
+      for (var k = 0; k < ai; k++) h += histHTML(steps[k], k === ai - 1);
+      thread.innerHTML = h + curHTML();
+      curAi = ai; curWords = 0; inputBuilt = false;
+    }
+    var wordsEl = $('wzWords');
+    while (curWords < nw) {
+      var sp = document.createElement('span');
+      sp.className = 'wd';
+      sp.textContent = a.words[curWords] + ' ';
+      wordsEl.appendChild(sp);
+      curWords++;
+    }
+    $('wzTCur').style.display = nw < a.words.length ? 'inline-block' : 'none';
+
+    if (t >= a.tIn && !inputBuilt) { $('wzIn').innerHTML = inputHTML(q); inputBuilt = true; }
+    if (inputBuilt) {
+      if (isYn) {
+        var c = ready ? '#501283' : '#C1C1C1';
+        $('wzYes').style.borderColor = c; $('wzYesR').style.borderColor = c;
+        $('wzDot').style.transform = 'scale(' + (ready ? 1 : 0) + ')';
+      } else {
+        $('wzTyped').textContent = q.ans.slice(0, chars);
+        $('wzPh').style.display = chars === 0 ? '' : 'none';
+        $('wzICur').style.display = pressed ? 'none' : 'inline-block';
+      }
+      var nx = $('wzNext');
+      nx.style.background = pressed ? '#3A0C5F' : (ready ? '#501283' : '#DBDBDB');
+      nx.style.transform = 'scale(' + ((pressed && t < a.tNx + 160) ? 0.92 : 1) + ')';
+    }
+
+    var off = $('wzCur').offsetTop;
+    thread.style.transition = t < 400 ? 'none' : 'transform .7s cubic-bezier(.22,1,.36,1), opacity .5s ease';
+    thread.style.transform = 'translateY(' + (30 - off) + 'px)';
+    thread.style.opacity = (t < 250 || t > END + 2200) ? '0' : '1';
+  }
+
+  var reduce = false;
+  try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  if (reduce) { render(END + 100); return; }
+  var t0 = performance.now();
+  function frame(now) { render((now - t0) % L); requestAnimationFrame(frame); }
+  requestAnimationFrame(frame);
+})();
+
+</script>
+</body>
+</html>
